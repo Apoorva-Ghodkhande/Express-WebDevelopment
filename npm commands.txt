@@ -1,0 +1,15 @@
+npm -v
+npm i mongoose
+npm list
+npm view mongoose -> It will show package.json of mongoose.
+npm i mongoose@2.4.2
+npm list --depth=0
+npm outdated
+npm i jshint --save-dev
+npm un mongoose -> for uninstalling
+
+I'd recommend using RemoteSigned as opposed to Unrestricted, and limiting the policy to the CurrentUser if possible.
+
+Run Powershell as Admin, and then:
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
