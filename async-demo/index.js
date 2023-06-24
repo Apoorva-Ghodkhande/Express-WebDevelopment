@@ -14,31 +14,40 @@
 //     ,2000);
 // }
 
-//with Arrow function
+//with Promises
 console.log('');
 console.log('Before');
-getUser(1,(user)=>{
-console.log('User',user);
-getRepositories(user.username,function(repoArray){
-console.log(repoArray);
-});
-});
-console.log('After');
+// getUser(1,(user)=>{
+// console.log('User',user);
+// getRepositories(user.username,function(repoArray){
+// console.log(repoArray);
+// });
+// });
 
 
-function getUser(id,callback){
+getUser(1)
+         .then(user=> getRepositories(user.username))
+         .then(repo=> console.log(repo));
+
+         console.log('After');
+
+function getUser(id){
+   return new Promise((resolve,reject)=>{
     setTimeout(()=>{
         console.log('Reading a user from a database');
-        callback({id:id, username:'apoorva'});
+        resolve({id:id, username:'apoorva'});
     }
     ,2000);
+});
 }
 
 
-function getRepositories(username,callback){
+function getRepositories(username){
+    return new Promise((resolve,reject)=>{
     setTimeout(()=>{
         console.log('Reading a user from a database');
-        callback(['repo1','repo2','repo3']);
+        resolve(['repo1','repo2','repo3']);
     }
     ,2000);
+});
 }
